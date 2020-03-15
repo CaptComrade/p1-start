@@ -3,8 +3,8 @@ import numpy as np
 import sys
 
 filename = sys.argv[1]        # Stores ARG1 in filename, as in: $ python plot.py ARG1 ARG2 
-data = np.loadtxt(filename, delimiter=",", skiprows=32, usecols=(4,8))   # Attempts to load filename into local variable data.
-
+data = np.loadtxt(filename, delimiter=",", skiprows=32, usecols=(3,7))   # Attempts to load filename into local variable data.
+print(data)
 ## Part 0
 # Figure out what arguments to add to the loadtxt function call
 # so that numbers are loaded into the local function 'data'.
