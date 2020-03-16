@@ -7,7 +7,7 @@ data = np.loadtxt(filename, delimiter=",", skiprows=32, usecols=(3,7))   # Attem
 # print(data)
 y_data=data[:,0]
 x_data=data[:,1]
-y_data_adjust=y_data*-1
+y_data_adjust=(y_data*-1)-(y_data[1]*-1)
 x_data_adjust=x_data*-1
 
 print(x_data_adjust)
