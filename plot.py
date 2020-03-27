@@ -18,21 +18,25 @@ print(datafile.readline())
 
 
 # While loop shenanigans for dynamic skiprows
-count =0
 prevLine=""
 
 while True:
-	count +=1
 	prevLine=datafile.readline()
 	if prevLine[0] is not '"':
 		print(prevLine)
 		break
 		
 	
-newData=prevLine.split(",")
-newerData=[newData[3],newData[7]]
+#newData=prevLine.split(",")
+#newerData=[newData[3],newData[7]]
+newestData=[]
 
-
+while True:
+	newestData=newestData+prevLine.split(",")
+	datafile.readline()
+				
+		
+	
 
 
 
