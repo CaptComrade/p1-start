@@ -2,44 +2,16 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sys
 
-datafile = open(sys.argv[1], "rt")        # Stores ARG1 in filename, as in: $ python plot.py ARG1 ARG2 
-# filename= sys.argv[1]
-print(datafile.readline())
-print(datafile.readline())
-#data = np.loadtxt(filename, delimiter=",", skiprows=32, usecols=(3,7))   # Attempts to load filename into local variable data.
-#print(data)
-#y_data=data[:,0]
-#x_data=data[:,1]
-#y_data_adjust=(y_data*-1)-(y_data[1]*-1)
-#x_data_adjust=x_data*-1
+filename = sys.argv[1]        # Stores ARG1 in filename, as in: $ python plot.py ARG1 ARG2 
+data = np.loadtxt(filename, delimiter=",", skiprows=32, usecols=(3,7))   # Attempts to load filename into local variable data.
+print(data)
+y_data=data[:,0]
+x_data=data[:,1]
+y_data_adjust=(y_data*-1)-(y_data[1]*-1)
+x_data_adjust=x_data*-1
 
-#print(x_data_adjust)
-#print(y_data_adjust)
-
-
-# While loop shenanigans for dynamic skiprows
-prevLine=""
-
-while True:
-	prevLine=datafile.readline()
-	if prevLine[0] is not '"':
-		print(prevLine)
-		break
-		
-	
-#newData=prevLine.split(",")
-#newerData=[newData[3],newData[7]]
-newestData=[]
-
-while True:
-	newestData=newestData+prevLine.split(",")
-	datafile.readline()
-				
-		
-	
-
-
-
+print(x_data_adjust)
+print(y_data_adjust)
 
 ## Part 0
 # Figure out what arguments to add to the loadtxt function call
@@ -55,8 +27,8 @@ while True:
 # Stress (y-axis) vs Strain (x-axis)
 # plot raw-data/Sp15_245L_sect-001_group-1_glass.raw
 # Make sure to include axis labels and units!
-#          plt.plot(x_data_adjust,y_data_adjust,color='k',linestyle='-')
-#          plt.show()
+plt.plot(x_data_adjust,y_data_adjust,color='k',linestyle='-')
+plt.show()
 
 ## Part 2
 # Check to see if your code in part 1 will plot all of the files in raw-data/
