@@ -11,7 +11,7 @@ while datafile.readline()[0] is '"':
 	count += 1
 
 data = np.loadtxt(filename, delimiter=",", skiprows=count, usecols=(3,7))   # Attempts to load filename into local variable data.
-#print(data)
+
 y_data=data[:,0]
 x_data=data[:,1]
 y_data_adjust=(y_data*-1)-(y_data[1]*-1)
