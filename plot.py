@@ -43,8 +43,8 @@ plt.xlabel('Strain [% Extension]')
 plt.ylabel('Stress [MPa]')
 plt.legend(loc='best')
 plt.show()
-path = 'graphs/'+str(filename)+'.png'
-plt.savefig(path)
+path = str(filename[-5])+'.png'
+plt.savefig('graphs/'+path)
 ## Part 2
 # Check to see if your code in part 1 will plot all of the files in raw-data/
 # Edit the files (use git liberally here!) to make them more usable
