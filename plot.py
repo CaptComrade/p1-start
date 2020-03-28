@@ -36,15 +36,15 @@ print(y_data_adjust)
 # Make sure to include axis labels and units!
 regSlope, regIntercept = np.polyfit(x_data_adjust,y_data_adjust, 1)
 f_linear = np.poly1d((regSlope,regIntercept))
-youngMod=0
-print("Young's Modulus is " + str() + " MPa")
+print("Young's Modulus is " + str(regSlope) + " MPa")
 plt.plot(x_data_adjust,y_data_adjust,color='k',linestyle='-')
 plt.plot(x_data_adjust,f_linear(x_data_adjust),color='#2929a3',linestyle='--',label='Linear Regression')
 plt.xlabel('Strain [% Extension]')
 plt.ylabel('Stress [MPa]')
 plt.legend(loc='best')
 plt.show()
-
+path = 'graphs/'+str(filename)+'.png'
+plt.savefig(path)
 ## Part 2
 # Check to see if your code in part 1 will plot all of the files in raw-data/
 # Edit the files (use git liberally here!) to make them more usable
