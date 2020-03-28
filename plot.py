@@ -3,8 +3,15 @@ import numpy as np
 import sys
 
 filename = sys.argv[1]        # Stores ARG1 in filename, as in: $ python plot.py ARG1 ARG2 
-data = np.loadtxt(filename, delimiter=",", skiprows=32, usecols=(3,7))   # Attempts to load filename into local variable data.
-print(data)
+
+
+datafile=open(sys.argv[1], "rt")
+count=0
+while datafile.readline()[0] is '"':
+	count += 1
+
+data = np.loadtxt(filename, delimiter=",", skiprows=count, usecols=(3,7))   # Attempts to load filename into local variable data.
+#print(data)
 y_data=data[:,0]
 x_data=data[:,1]
 y_data_adjust=(y_data*-1)-(y_data[1]*-1)
@@ -27,7 +34,11 @@ print(y_data_adjust)
 # Stress (y-axis) vs Strain (x-axis)
 # plot raw-data/Sp15_245L_sect-001_group-1_glass.raw
 # Make sure to include axis labels and units!
+regSlope, regIntercept = np.polyfit(x_data_adjust,y_data_adjust, 1)
+f_linear = np.poly1d((regSlope,regIntercept))
+print("Young's Modulus is " + str(regSlope) + " MPa")
 plt.plot(x_data_adjust,y_data_adjust,color='k',linestyle='-')
+plt.plot(x_data_adjust,f_linear(x_data_adjust),color='#2929a3',linestyle='--',label='Linear Regression')
 plt.show()
 
 ## Part 2
@@ -40,7 +51,6 @@ plt.show()
 # the stress-strain data. Plot your line against the data to make 
 # sure it makes sense! Use the slope of this line to calculate and print
 # the Young's modulus (with units!)
-
 
 ## Part 4
 # Modify your code to save your plots to a file and see if you can generate
