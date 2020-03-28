@@ -36,9 +36,13 @@ print(y_data_adjust)
 # Make sure to include axis labels and units!
 regSlope, regIntercept = np.polyfit(x_data_adjust,y_data_adjust, 1)
 f_linear = np.poly1d((regSlope,regIntercept))
-print("Young's Modulus is " + str(regSlope) + " MPa")
+youngMod=0
+print("Young's Modulus is " + str() + " MPa")
 plt.plot(x_data_adjust,y_data_adjust,color='k',linestyle='-')
 plt.plot(x_data_adjust,f_linear(x_data_adjust),color='#2929a3',linestyle='--',label='Linear Regression')
+plt.xlabel('Strain [% Extension]')
+plt.ylabel('Stress [MPa]')
+plt.legend(loc='best')
 plt.show()
 
 ## Part 2
